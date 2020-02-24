@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kwn-mw-DAN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0hL-z7-Bxj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -37,10 +37,28 @@
             </objects>
             <point key="canvasLocation" x="2289.8550724637685" y="59.598214285714285"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="u6h-e9-21o">
+            <objects>
+                <tabBarController id="0hL-z7-Bxj" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Tf-Xq-6IU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Kwn-mw-DAN" kind="relationship" relationship="viewControllers" id="4Dg-RC-uja"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTW-Yr-VFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-366" y="-315"/>
+        </scene>
+        <!--Compras-->
         <scene sceneID="6ll-Hp-IbY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kwn-mw-DAN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Compras" image="cart.fill" catalog="system" id="KcN-lr-MIN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1kS-xW-dJj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -56,4 +74,7 @@
             <point key="canvasLocation" x="1379.7101449275362" y="59.598214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart.fill" catalog="system" width="64" height="50"/>
+    </resources>
 </document>
