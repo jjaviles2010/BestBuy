@@ -15,6 +15,7 @@ class ProductsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
     }
     
     private func loadProducts() {
