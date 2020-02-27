@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,11 +87,45 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kwn-mw-DAN" kind="relationship" relationship="viewControllers" id="4Dg-RC-uja"/>
+                        <segue destination="2e6-O5-eRT" kind="relationship" relationship="viewControllers" id="Uum-zB-foN"/>
+                        <segue destination="F2X-gY-Jql" kind="relationship" relationship="viewControllers" id="OMK-Yp-gYp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTW-Yr-VFv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-890" y="-507"/>
+        </scene>
+        <!--Ajustes-->
+        <scene sceneID="lAL-i9-cwl">
+            <objects>
+                <viewController id="2e6-O5-eRT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8R7-gv-WKX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EPt-7B-Hy1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ajustes" image="pencil.and.ellipsis.rectangle" catalog="system" id="DAp-3P-Xcc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpf-mj-pAU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-159" y="-966"/>
+        </scene>
+        <!--Total da Compra-->
+        <scene sceneID="YuL-j2-dOP">
+            <objects>
+                <viewController id="F2X-gY-Jql" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ytc-pK-TAK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ptp-iZ-4sy"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Total da Compra" image="bag.fill" catalog="system" id="cAS-tW-nfE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gqi-TP-sTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="-972"/>
         </scene>
         <!--Compras-->
         <scene sceneID="6ll-Hp-IbY">
@@ -109,10 +144,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dvr-zt-BpY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="-483"/>
+            <point key="canvasLocation" x="383" y="-108"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bag.fill" catalog="system" width="64" height="64"/>
         <image name="cart.fill" catalog="system" width="64" height="50"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
     </resources>
 </document>
