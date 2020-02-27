@@ -83,7 +83,7 @@
         <!--Cadastrar Produto-->
         <scene sceneID="7E9-4f-Awy">
             <objects>
-                <viewController id="GsB-vT-3Jp" sceneMemberID="viewController">
+                <viewController id="GsB-vT-3Jp" customClass="RegisterProductViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BET-Qw-E41">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,33 +95,33 @@
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app.gift.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VyS-dH-u89">
                                 <rect key="frame" x="20" y="170" width="374" height="238"/>
-                                <color key="tintColor" red="0.81731152534484863" green="0.32608777284622192" blue="0.32154965400695801" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.80167275667190552" green="0.32214969396591187" blue="0.31762868165969849" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240.5" id="3iG-Eq-xpv"/>
                                     <constraint firstAttribute="width" constant="374" id="BTp-g4-KvZ"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Estado da compra" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTD-gf-i1I">
-                                <rect key="frame" x="20" y="444" width="306" height="34"/>
+                                <rect key="frame" x="20" y="497" width="306" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Valor (U$)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HAz-0Y-IAh">
-                                <rect key="frame" x="20" y="499" width="94.5" height="34"/>
+                                <rect key="frame" x="20" y="552" width="94.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRK-ea-ATS">
-                                <rect key="frame" x="279" y="502" width="51" height="31"/>
+                                <rect key="frame" x="279" y="555" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cartão?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8Q-T1-WP2">
-                                <rect key="frame" x="198" y="505" width="73" height="26"/>
+                                <rect key="frame" x="198" y="558" width="73" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsl-HY-X99">
-                                <rect key="frame" x="20" y="603" width="374" height="54"/>
+                                <rect key="frame" x="20" y="656" width="374" height="54"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="374" id="V4Z-4l-C0W"/>
@@ -131,16 +131,36 @@
                                 <state key="normal" title="CADASTRAR">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerProduct:" destination="GsB-vT-3Jp" eventType="touchUpInside" id="UPw-fN-5yD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-or-e4u">
+                                <rect key="frame" x="69" y="418" width="279" height="43"/>
+                                <color key="backgroundColor" red="0.96320072017185432" green="0.37796483956110738" blue="0.37796483956110738" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="Czx-Ps-hmm"/>
+                                    <constraint firstAttribute="height" constant="43" id="IgX-x1-Wik"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Selecionar Imagem">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectProductImage:" destination="GsB-vT-3Jp" eventType="touchUpInside" id="ted-V2-IZz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VyS-dH-u89" firstAttribute="top" secondItem="8HG-o3-OIo" secondAttribute="bottom" constant="22" id="0Wp-DU-RhM"/>
-                            <constraint firstItem="yTD-gf-i1I" firstAttribute="top" secondItem="VyS-dH-u89" secondAttribute="bottom" constant="34.5" id="0hI-zc-9zR"/>
                             <constraint firstItem="pRK-ea-ATS" firstAttribute="leading" secondItem="d8Q-T1-WP2" secondAttribute="trailing" constant="8" id="1Ov-fR-haj"/>
                             <constraint firstItem="rsl-HY-X99" firstAttribute="top" secondItem="HAz-0Y-IAh" secondAttribute="bottom" constant="70" id="48H-01-vX2"/>
+                            <constraint firstItem="BDf-or-e4u" firstAttribute="top" secondItem="VyS-dH-u89" secondAttribute="bottom" constant="8.5" id="6eD-H2-iKz"/>
                             <constraint firstItem="VyS-dH-u89" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="9P7-cC-JTO"/>
                             <constraint firstItem="rsl-HY-X99" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="BMY-h4-9Zo"/>
+                            <constraint firstItem="yTD-gf-i1I" firstAttribute="top" secondItem="BDf-or-e4u" secondAttribute="bottom" constant="36" id="CfR-vZ-C85"/>
+                            <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="BDf-or-e4u" secondAttribute="trailing" constant="66" id="EAq-Hu-bCx"/>
                             <constraint firstItem="HAz-0Y-IAh" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="HNs-OO-wFY"/>
                             <constraint firstItem="8HG-o3-OIo" firstAttribute="top" secondItem="sUq-ZS-GTS" secondAttribute="top" constant="25" id="HPZ-y3-fxv"/>
                             <constraint firstItem="rsl-HY-X99" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="JQN-ln-JZ5"/>
@@ -162,14 +182,21 @@
                             <constraint firstItem="d8Q-T1-WP2" firstAttribute="leading" secondItem="HAz-0Y-IAh" secondAttribute="trailing" constant="83.5" id="oIv-3x-bT2"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="rsl-HY-X99" secondAttribute="trailing" constant="20" id="pj0-1v-fFc"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="8HG-o3-OIo" secondAttribute="trailing" constant="20" id="qyy-Rd-QTX"/>
+                            <constraint firstItem="BDf-or-e4u" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="69" id="tQs-iq-qsX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sUq-ZS-GTS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cadastrar Produto" id="EJQ-LJ-oIB"/>
+                    <connections>
+                        <outlet property="ivProductImage" destination="VyS-dH-u89" id="sNX-Gv-BMD"/>
+                        <outlet property="tfProductName" destination="8HG-o3-OIo" id="qFh-8n-Vt3"/>
+                        <outlet property="tfState" destination="yTD-gf-i1I" id="ZZS-PZ-AsZ"/>
+                        <outlet property="tfValue" destination="HAz-0Y-IAh" id="DnS-Tx-nXD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1f-Ib-PMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2598.5507246376815" y="-467.41071428571428"/>
+            <point key="canvasLocation" x="2598.5507246376815" y="-483.48214285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="u6h-e9-21o">

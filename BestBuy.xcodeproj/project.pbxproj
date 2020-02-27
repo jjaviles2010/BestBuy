@@ -11,6 +11,7 @@
 		312BD7A42405F73E00C20141 /* UIViewController+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A32405F73E00C20141 /* UIViewController+Context.swift */; };
 		312BD7A624060CB000C20141 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A524060CB000C20141 /* ProductTableViewCell.swift */; };
 		312BD7A82406122100C20141 /* Product+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A72406122100C20141 /* Product+image.swift */; };
+		312BD7AA24074D5500C20141 /* RegisterProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A924074D5500C20141 /* RegisterProductViewController.swift */; };
 		68ADBD7923FDCC230037F47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7823FDCC230037F47F /* AppDelegate.swift */; };
 		68ADBD7B23FDCC230037F47F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */; };
 		68ADBD7D23FDCC230037F47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7C23FDCC230037F47F /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		312BD7A32405F73E00C20141 /* UIViewController+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Context.swift"; sourceTree = "<group>"; };
 		312BD7A524060CB000C20141 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		312BD7A72406122100C20141 /* Product+image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+image.swift"; sourceTree = "<group>"; };
+		312BD7A924074D5500C20141 /* RegisterProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProductViewController.swift; sourceTree = "<group>"; };
 		68ADBD7523FDCC230037F47F /* BestBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ADBD7823FDCC230037F47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,13 +95,14 @@
 				68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */,
 				68ADBD7C23FDCC230037F47F /* ViewController.swift */,
 				68ADBD7E23FDCC230037F47F /* Main.storyboard */,
+				312BD7A924074D5500C20141 /* RegisterProductViewController.swift */,
 				68ADBD8423FDCC260037F47F /* Assets.xcassets */,
 				68ADBD8623FDCC260037F47F /* LaunchScreen.storyboard */,
 				68ADBD8923FDCC260037F47F /* Info.plist */,
 				68ADBD8123FDCC230037F47F /* BestBuy.xcdatamodeld */,
-				312BD7A12405F51C00C20141 /* ProductsTableViewController.swift */,
 				312BD7A32405F73E00C20141 /* UIViewController+Context.swift */,
 				312BD7A524060CB000C20141 /* ProductTableViewCell.swift */,
+				312BD7A12405F51C00C20141 /* ProductsTableViewController.swift */,
 				312BD7A72406122100C20141 /* Product+image.swift */,
 			);
 			path = BestBuy;
@@ -220,6 +223,7 @@
 				312BD7A624060CB000C20141 /* ProductTableViewCell.swift in Sources */,
 				312BD7A42405F73E00C20141 /* UIViewController+Context.swift in Sources */,
 				68ADBD8323FDCC230037F47F /* BestBuy.xcdatamodeld in Sources */,
+				312BD7AA24074D5500C20141 /* RegisterProductViewController.swift in Sources */,
 				312BD7A82406122100C20141 /* Product+image.swift in Sources */,
 				68ADBD7B23FDCC230037F47F /* SceneDelegate.swift in Sources */,
 				312BD7A22405F51C00C20141 /* ProductsTableViewController.swift in Sources */,

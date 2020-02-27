@@ -15,12 +15,17 @@ class ProductsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadProducts()
         tableView.tableFooterView = UIView()
     }
     
     private func loadProducts() {
         
         let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
+                
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -38,7 +43,7 @@ class ProductsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
 
     
