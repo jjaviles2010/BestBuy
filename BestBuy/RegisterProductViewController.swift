@@ -72,7 +72,7 @@ class RegisterProductViewController: UIViewController {
     @IBAction func registerProduct(_ sender: Any) {
         
         let state: State
-        
+        product = Product(context: context)
         product?.name = tfProductName.text
         product?.image = ivProductImage.image
         state = State(context: context)
