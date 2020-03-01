@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterProductViewController: UIViewController {
+class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var tfProductName: UITextField!
     @IBOutlet weak var ivProductImage: UIImageView!
@@ -16,12 +16,26 @@ class RegisterProductViewController: UIViewController {
     @IBOutlet weak var tfValue: UITextField!
     @IBOutlet weak var swCard: UISwitch!
     
+    private var pickerStates = UIPickerView()
+    
     var product: Product?
+    var pickerData = [["Florida", "California", "Georgia", "Texas", "Washington"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.pickerStates.delegate = self
+        self.pickerStates.dataSource = self
+        tfState.inputView = pickerStates
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func selectPicture(sourceType: UIImagePickerController.SourceType) {
@@ -30,7 +44,24 @@ class RegisterProductViewController: UIViewController {
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
-
+ 
+    //Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[component][row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        tfState.text = pickerData[component][row]
+    }
+    
     /*
     // MARK: - Navigation
 
