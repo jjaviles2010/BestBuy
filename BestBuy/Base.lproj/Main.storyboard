@@ -107,10 +107,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Valor (U$)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HAz-0Y-IAh">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Valor (U$)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HAz-0Y-IAh">
                                 <rect key="frame" x="20" y="552" width="94.5" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <nil key="textColor"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRK-ea-ATS">
                                 <rect key="frame" x="279" y="555" width="51" height="31"/>
@@ -151,6 +151,16 @@
                                     <action selector="selectProductImage:" destination="GsB-vT-3Jp" eventType="touchUpInside" id="ted-V2-IZz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CD3-lj-K17">
+                                <rect key="frame" x="334" y="494" width="60" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="eQZ-9Q-JXP"/>
+                                    <constraint firstAttribute="width" constant="60" id="sup-XZ-swA"/>
+                                </constraints>
+                                <state key="normal" image="plus.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="regular"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -160,6 +170,7 @@
                             <constraint firstItem="BDf-or-e4u" firstAttribute="top" secondItem="VyS-dH-u89" secondAttribute="bottom" constant="8.5" id="6eD-H2-iKz"/>
                             <constraint firstItem="VyS-dH-u89" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="9P7-cC-JTO"/>
                             <constraint firstItem="rsl-HY-X99" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="BMY-h4-9Zo"/>
+                            <constraint firstItem="rsl-HY-X99" firstAttribute="top" secondItem="CD3-lj-K17" secondAttribute="bottom" constant="116" id="C6o-Rn-tK2"/>
                             <constraint firstItem="yTD-gf-i1I" firstAttribute="top" secondItem="BDf-or-e4u" secondAttribute="bottom" constant="36" id="CfR-vZ-C85"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="BDf-or-e4u" secondAttribute="trailing" constant="66" id="EAq-Hu-bCx"/>
                             <constraint firstItem="HAz-0Y-IAh" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="HNs-OO-wFY"/>
@@ -167,6 +178,7 @@
                             <constraint firstItem="rsl-HY-X99" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="JQN-ln-JZ5"/>
                             <constraint firstItem="pRK-ea-ATS" firstAttribute="leading" secondItem="d8Q-T1-WP2" secondAttribute="trailing" constant="8" id="KVH-CW-JCt"/>
                             <constraint firstItem="VyS-dH-u89" firstAttribute="top" secondItem="8HG-o3-OIo" secondAttribute="bottom" constant="22" id="KzT-21-X87"/>
+                            <constraint firstItem="CD3-lj-K17" firstAttribute="leading" secondItem="yTD-gf-i1I" secondAttribute="trailing" constant="8" id="OTf-zA-zAj"/>
                             <constraint firstItem="d8Q-T1-WP2" firstAttribute="top" secondItem="yTD-gf-i1I" secondAttribute="bottom" constant="27" id="PQf-Fl-4iF"/>
                             <constraint firstItem="rsl-HY-X99" firstAttribute="top" secondItem="HAz-0Y-IAh" secondAttribute="bottom" constant="70" id="Qln-fg-RMS"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="VyS-dH-u89" secondAttribute="trailing" constant="20" id="YBP-2e-6Qy"/>
@@ -176,6 +188,8 @@
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="yTD-gf-i1I" secondAttribute="trailing" constant="88" id="fa7-P5-a1H"/>
                             <constraint firstItem="pRK-ea-ATS" firstAttribute="top" secondItem="yTD-gf-i1I" secondAttribute="bottom" constant="24" id="glF-Hc-8f2"/>
                             <constraint firstItem="8HG-o3-OIo" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="h2K-MQ-0gP"/>
+                            <constraint firstItem="CD3-lj-K17" firstAttribute="top" secondItem="BDf-or-e4u" secondAttribute="bottom" constant="33" id="h4l-Cz-Erh"/>
+                            <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="CD3-lj-K17" secondAttribute="trailing" constant="20" id="hxe-nI-ZgV"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="pRK-ea-ATS" secondAttribute="trailing" constant="86" id="j8u-1V-tuI"/>
                             <constraint firstItem="VyS-dH-u89" firstAttribute="leading" secondItem="sUq-ZS-GTS" secondAttribute="leading" constant="20" id="lCQ-Us-AjZ"/>
                             <constraint firstItem="sUq-ZS-GTS" firstAttribute="trailing" secondItem="rsl-HY-X99" secondAttribute="trailing" constant="20" id="mG6-77-mih"/>
@@ -275,5 +289,6 @@
         <image name="bag.fill" catalog="system" width="64" height="64"/>
         <image name="cart.fill" catalog="system" width="64" height="50"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
+        <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>
