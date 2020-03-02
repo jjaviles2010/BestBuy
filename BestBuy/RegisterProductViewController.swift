@@ -24,6 +24,8 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        populateProductDetails()
+        
         // Do any additional setup after loading the view.
         self.pickerStates.delegate = self
         self.pickerStates.dataSource = self
@@ -36,6 +38,16 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func populateProductDetails() {
+        if let product = product {
+            tfProductName.text = product.name
+            ivProductImage.image = product.img
+            tfState.text = product.state?.name
+            tfValue.text = "\(product.value)"
+            swCard.isOn = product.usedCard
+        }
     }
     
     func selectPicture(sourceType: UIImagePickerController.SourceType) {
@@ -103,14 +115,17 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func registerProduct(_ sender: Any) {
         
         let state: State
-        product = Product(context: context)
+        if (product == nil) {
+            product = Product(context: context)
+        }
         product?.name = tfProductName.text
         product?.image = ivProductImage.image
         state = State(context: context)
         state.name = tfState.text
         state.tax = 2.2
         product?.state = state
-        product?.usedCard = true
+        product?.usedCard = swCard.isOn
+        product?.value = Double(tfValue.text!) ?? 0
         
         try? context.save()
         navigationController?.popViewController(animated: true)

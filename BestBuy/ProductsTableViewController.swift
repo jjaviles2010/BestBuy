@@ -34,6 +34,16 @@ class ProductsTableViewController: UITableViewController {
         try? fetchedResultsController.performFetch()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? RegisterProductViewController else {
+            return
+        }
+        
+        if let index = tableView.indexPathForSelectedRow {
+            vc.product = fetchedResultsController.object(at: index)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
