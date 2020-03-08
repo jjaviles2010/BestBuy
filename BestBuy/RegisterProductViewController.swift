@@ -114,22 +114,58 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     
     @IBAction func registerProduct(_ sender: Any) {
         
-        let state: State
-        if (product == nil) {
-            product = Product(context: context)
+        
+        if (validateFields()) {
+            let state: State
+            if (product == nil) {
+                product = Product(context: context)
+            }
+            product?.name = tfProductName.text
+            product?.image = ivProductImage.image
+            state = State(context: context)
+            state.name = tfState.text
+            state.tax = 2.2
+            product?.state = state
+            product?.usedCard = swCard.isOn
+            product?.value = Double(tfValue.text!) ?? 0
+            
+            try? context.save()
+            navigationController?.popViewController(animated: true)
         }
-        product?.name = tfProductName.text
-        product?.image = ivProductImage.image
-        state = State(context: context)
-        state.name = tfState.text
-        state.tax = 2.2
-        product?.state = state
-        product?.usedCard = swCard.isOn
-        product?.value = Double(tfValue.text!) ?? 0
+    }
+    
+    func validateFields() -> Bool {
         
-        try? context.save()
-        navigationController?.popViewController(animated: true)
+        var fieldsValidated = true
         
+        if(tfProductName.text!.isEmpty) {
+            showError(fieldDesc: "Nome do produto")
+            fieldsValidated = false
+        }
+        
+        if (ivProductImage.image == nil) {
+            showError(fieldDesc: "Imagem")
+            fieldsValidated = false
+        }
+        
+        if(tfState.text!.isEmpty) {
+            showError(fieldDesc: "Estado")
+            fieldsValidated = false
+        }
+        
+        if(tfValue.text!.isEmpty) {
+            showError(fieldDesc: "Valor")
+            fieldsValidated = false
+        }
+        
+        return fieldsValidated
+    }
+    
+    func showError(fieldDesc: String) {
+        let alert = UIAlertController(title: "Erro", message: "O campo \(fieldDesc) é obrigatorio!", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 
