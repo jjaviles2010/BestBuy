@@ -8,15 +8,34 @@
 
 import UIKit
 
+struct Keys {
+    static let cotacao_dolar = "cotacao_dolar"
+    static let iof = "iof"
+}
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tfDollar: UITextField!
     @IBOutlet weak var tfIOF: UITextField!
     
+    let ud = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+            
+        view.addGestureRecognizer(tapGesture)
+    }
+      
+    override func viewWillAppear(_ animated: Bool) {
+        tfDollar.text = ud.string(forKey: Keys.cotacao_dolar)
+        tfIOF.text = ud.string(forKey: Keys.iof)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 
