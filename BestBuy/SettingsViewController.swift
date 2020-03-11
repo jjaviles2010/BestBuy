@@ -53,3 +53,13 @@ class SettingsViewController: UIViewController {
     }
     
 }
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        ud.set(textField.text, forKey: Keys.cotacao_dolar)
+        print("aqui")
+        return true
+    }
+}
