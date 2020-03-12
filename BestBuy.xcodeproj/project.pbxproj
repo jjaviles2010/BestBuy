@@ -21,6 +21,7 @@
 		68ADBD8823FDCC260037F47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68ADBD8623FDCC260037F47F /* LaunchScreen.storyboard */; };
 		68ADBD9323FDCC260037F47F /* BestBuyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD9223FDCC260037F47F /* BestBuyTests.swift */; };
 		BE2AB42F241A72D70019F703 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE2AB42E241A72D70019F703 /* Settings.bundle */; };
+		BEEE975C241AB37C009F4599 /* SettingsStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE975B241AB37C009F4599 /* SettingsStateTableViewCell.swift */; };
 		C353CB4824180681009AEBA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353CB4724180681009AEBA8 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		68ADBD9223FDCC260037F47F /* BestBuyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestBuyTests.swift; sourceTree = "<group>"; };
 		68ADBD9423FDCC260037F47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE2AB42E241A72D70019F703 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		BEEE975B241AB37C009F4599 /* SettingsStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStateTableViewCell.swift; sourceTree = "<group>"; };
 		C353CB4724180681009AEBA8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				312BD7A12405F51C00C20141 /* ProductsTableViewController.swift */,
 				312BD7A72406122100C20141 /* Product+image.swift */,
 				C353CB4724180681009AEBA8 /* SettingsViewController.swift */,
+				BEEE975B241AB37C009F4599 /* SettingsStateTableViewCell.swift */,
 				BE2AB42E241A72D70019F703 /* Settings.bundle */,
 			);
 			path = BestBuy;
@@ -235,6 +238,7 @@
 				312BD7A82406122100C20141 /* Product+image.swift in Sources */,
 				68ADBD7B23FDCC230037F47F /* SceneDelegate.swift in Sources */,
 				312BD7A22405F51C00C20141 /* ProductsTableViewController.swift in Sources */,
+				BEEE975C241AB37C009F4599 /* SettingsStateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
