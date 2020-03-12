@@ -7,18 +7,14 @@
 //
 
 import UIKit
-
-struct Keys {
-    static let cotacao_dolar = "cotacao_dolar"
-    static let iof = "iof"
-}
+import Foundation
 
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tfDollar: UITextField!
     @IBOutlet weak var tfIOF: UITextField!
     
-    let ud = UserDefaults.standard
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +26,10 @@ class SettingsViewController: UIViewController {
     }
       
     override func viewWillAppear(_ animated: Bool) {
-        tfDollar.text = ud.string(forKey: Keys.cotacao_dolar)
-        tfIOF.text = ud.string(forKey: Keys.iof)
+        tfDollar.text = userDefault.string(forKey: "cotacaoDolar")
+        tfIOF.text = userDefault.string(forKey: "iof")
     }
-    
+    	
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -55,11 +51,28 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        ud.set(textField.text, forKey: Keys.cotacao_dolar)
-        print("aqui")
+        saveUserDefaultFromTextField(textField)
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        saveUserDefaultFromTextField(textField)
+    }
+    
+    func saveUserDefaultFromTextField(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        
+        switch textField {
+        case tfDollar:
+            userDefault.set(textField.text, forKey: "cotacaoDolar")
+        case tfIOF:
+            userDefault.set(textField.text, forKey: "iof")
+        default:
+            break
+        }
+
+    }
+    
 }

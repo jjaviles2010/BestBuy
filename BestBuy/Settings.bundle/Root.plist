@@ -18,9 +18,9 @@
 			<key>Title</key>
 			<string>Cotação do dólar (R$)</string>
 			<key>Key</key>
-			<string>cotacao_dolar</string>
+			<string>cotacaoDolar</string>
 			<key>DefaultValue</key>
-			<string>4.50</string>
+			<string>4.75</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -33,20 +33,20 @@
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>IOF</string>
+			<key>IsSecure</key>
+			<false/>
 			<key>Key</key>
 			<string>iof</string>
 			<key>DefaultValue</key>
-			<string>6.38</string>
-			<key>IsSecure</key>
-			<false/>
+			<real>6.38</real>
+			<key>Title</key>
+			<string>IOF</string>
 			<key>KeyboardType</key>
 			<string>NumbersAndPunctuation</string>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
 			<key>AutocorrectionType</key>
 			<string>No</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
 		</dict>
 	</array>
 </dict>

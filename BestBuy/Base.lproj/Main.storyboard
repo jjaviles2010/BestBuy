@@ -268,6 +268,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2e6-O5-eRT" id="EM9-0d-EYC"/>
+                                </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-Oa-kVV">
                                 <rect key="frame" x="20" y="373" width="374" height="128"/>
@@ -289,7 +292,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <outlet property="delegate" destination="2e6-O5-eRT" id="pqm-a0-6vq"/>
+                                    <outlet property="delegate" destination="2e6-O5-eRT" id="U5B-60-MOA"/>
                                 </connections>
                             </textField>
                         </subviews>
