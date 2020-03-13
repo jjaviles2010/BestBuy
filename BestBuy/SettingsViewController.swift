@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var tfDollar: UITextField!
     @IBOutlet weak var tfIOF: UITextField!
     @IBOutlet weak var stateTableView: UITableView!
@@ -23,81 +23,67 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadStates()
         
         // Do any additional setup after loading the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-            
+        
         view.addGestureRecognizer(tapGesture)
         stateTableView.delegate = self
         
     }
-      
+    
     override func viewWillAppear(_ animated: Bool) {
         tfDollar.text = userDefault.string(forKey: "cotacaoDolar")
         tfIOF.text = userDefault.string(forKey: "iof")
     }
-    	
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
     private func loadStates() {
-        
         let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
-        
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        do {
-            states = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        /*fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
-        try? fetchedResultsController.performFetch()*/
+        try? fetchedResultsController.performFetch()
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     
     func save(stateName: String, tax: String) {
-            
-      let entity =
-        NSEntityDescription.entity(forEntityName: "State",
-                                   in: context)!
-      
-      let stateLocal = NSManagedObject(entity: entity,
-                                   insertInto: context)
-            
-      stateLocal.setValue(stateName, forKeyPath: "name")
-      stateLocal.setValue(Double(tax), forKeyPath: "tax")
-      
-      do {
-        try context.save()
-        states.append(stateLocal)
-      } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-      }
+        
+        let entity =
+            NSEntityDescription.entity(forEntityName: "State",
+                                       in: context)!
+        
+        let state = NSManagedObject(entity: entity,
+                                    insertInto: context)
+        
+        state.setValue(stateName, forKeyPath: "name")
+        state.setValue(Double(tax), forKeyPath: "tax")
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
-
+    
+    /*
+     // MARK: - Actions
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     @IBAction func btAddState(_ sender: UIButton) {
         
@@ -107,20 +93,20 @@ class SettingsViewController: UIViewController {
         
         let saveAction = UIAlertAction(title: "Adicionar",
                                        style: .default) {
-           [unowned self] action in
+                                        [unowned self] action in
                                         
-           guard let textFieldState = alert.textFields?.first,
-            let stateToSave = textFieldState.text else {
-              return
-          }
-          
-        guard let textFieldTax = alert.textFields?[1],
-            let taxToSave = textFieldTax.text else {
-                return
-          }
+                                        guard let textFieldState = alert.textFields?.first,
+                                            let stateToSave = textFieldState.text else {
+                                                return
+                                        }
                                         
-          self.save(stateName: stateToSave, tax: taxToSave)
-          self.stateTableView.reloadData()
+                                        guard let textFieldTax = alert.textFields?[1],
+                                            let taxToSave = textFieldTax.text else {
+                                                return
+                                        }
+                                        
+                                        self.save(stateName: stateToSave, tax: taxToSave)
+                                        self.stateTableView.reloadData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancelar",
@@ -165,18 +151,16 @@ extension SettingsViewController: UITextFieldDelegate {
         default:
             break
         }
-
+        
     }
     
 }
 
 extension SettingsViewController: NSFetchedResultsControllerDelegate {
-
+    
     //Vai ser chamado quando for mudado alguma dado
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         stateTableView.reloadData()
-        
     }
     
 }
@@ -184,31 +168,22 @@ extension SettingsViewController: NSFetchedResultsControllerDelegate {
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections")
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRows")
-        //return fetchedResultsController.fetchedObjects?.count ?? 0
-        return states.count
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellForRowAt")
-                        
         let cell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as! SettingsStateTableViewCell
-
         let state = fetchedResultsController.object(at: indexPath)
-        
         cell.prepare(with: state)
-
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let state = fetchedResultsController.object(at: indexPath)
@@ -216,5 +191,5 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             try? context.save()
         }
     }
-      
+    
 }
