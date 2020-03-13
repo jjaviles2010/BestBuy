@@ -272,7 +272,7 @@
                                     <outlet property="delegate" destination="2e6-O5-eRT" id="EM9-0d-EYC"/>
                                 </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-Oa-kVV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="stateTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-Oa-kVV">
                                 <rect key="frame" x="20" y="373" width="374" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -331,6 +331,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ajustes" image="pencil.and.ellipsis.rectangle" catalog="system" id="DAp-3P-Xcc"/>
                     <connections>
+                        <outlet property="stateTableView" destination="GFh-Oa-kVV" id="EsS-HF-efs"/>
                         <outlet property="tfDollar" destination="GLr-hE-EF9" id="CvD-jE-tvY"/>
                         <outlet property="tfIOF" destination="TJK-D1-pJf" id="dkI-Rz-4KG"/>
                     </connections>
