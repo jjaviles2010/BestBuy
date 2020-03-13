@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var stateTableView: UITableView!
     
     let userDefault = UserDefaults.standard
-    var state: [NSManagedObject] = []
+    var states: [NSManagedObject] = []
     
     var fetchedResultsController: NSFetchedResultsController<State>!
     
@@ -51,11 +51,17 @@ class SettingsViewController: UIViewController {
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            states = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        /*fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
-        try? fetchedResultsController.performFetch()
+        try? fetchedResultsController.performFetch()*/
     }
     
     
@@ -73,28 +79,20 @@ class SettingsViewController: UIViewController {
 
     
     func save(stateName: String, tax: String) {
-      
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else {
-        return
-      }
-      
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
             
       let entity =
         NSEntityDescription.entity(forEntityName: "State",
-                                   in: managedContext)!
+                                   in: context)!
       
       let stateLocal = NSManagedObject(entity: entity,
-                                   insertInto: managedContext)
+                                   insertInto: context)
             
       stateLocal.setValue(stateName, forKeyPath: "name")
       stateLocal.setValue(Double(tax), forKeyPath: "tax")
       
       do {
-        try managedContext.save()
-        state.append(stateLocal)
+        try context.save()
+        states.append(stateLocal)
       } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
       }
@@ -194,13 +192,14 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("numberOfRows")
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        //return fetchedResultsController.fetchedObjects?.count ?? 0
+        return states.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cellForRowAt")
-        
+                        
         let cell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as! SettingsStateTableViewCell
 
         let state = fetchedResultsController.object(at: indexPath)
