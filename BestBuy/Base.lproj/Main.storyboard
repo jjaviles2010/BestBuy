@@ -161,6 +161,9 @@
                                 <state key="normal" image="plus.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="regular"/>
                                 </state>
+                                <connections>
+                                    <segue destination="2e6-O5-eRT" kind="show" id="8ka-DJ-1Uv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -243,25 +246,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotação do dólar (R$):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-2B-MTS">
-                                <rect key="frame" x="20" y="89" width="184" height="22"/>
+                                <rect key="frame" x="20" y="133" width="184" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IOF (%):" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfd-Ip-kg5">
-                                <rect key="frame" x="139" y="150" width="65" height="21.5"/>
+                                <rect key="frame" x="139" y="194" width="65" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Impostos por estado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bg-gI-owg">
-                                <rect key="frame" x="16" y="245" width="382" height="27.5"/>
+                                <rect key="frame" x="16" y="289" width="382" height="27.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJK-D1-pJf">
-                                <rect key="frame" x="225" y="143" width="156" height="34"/>
+                                <rect key="frame" x="225" y="187" width="156" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -269,7 +272,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLr-hE-EF9">
-                                <rect key="frame" x="225" y="81" width="156" height="34"/>
+                                <rect key="frame" x="225" y="125" width="156" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -346,6 +349,7 @@
                         <viewLayoutGuide key="safeArea" id="EPt-7B-Hy1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ajustes" image="pencil.and.ellipsis.rectangle" catalog="system" id="DAp-3P-Xcc"/>
+                    <navigationItem key="navigationItem" id="0EM-0v-6aS"/>
                     <connections>
                         <outlet property="stateTableView" destination="GFh-Oa-kVV" id="EsS-HF-efs"/>
                         <outlet property="tfDollar" destination="GLr-hE-EF9" id="CvD-jE-tvY"/>
@@ -400,6 +404,7 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="8ka-DJ-1Uv"/>
         <segue reference="vc1-gP-yP8"/>
     </inferredMetricsTieBreakers>
 </document>
