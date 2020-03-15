@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class ProductsTableViewController: UITableViewController {
     
@@ -52,8 +53,18 @@ class ProductsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        
+        if (fetchedResultsController.fetchedObjects?.count == 0) {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            emptyLabel.text = "Sua lista está vazia!"
+            emptyLabel.textAlignment = NSTextAlignment.center
+            self.tableView.backgroundView = emptyLabel
+            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return fetchedResultsController.fetchedObjects?.count ?? 0
+        }
     }
 
     
