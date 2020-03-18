@@ -12,7 +12,7 @@ class SettingsStateTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbState: UILabel!
     @IBOutlet weak var lbTax: UILabel!
-        
+    
     func prepare(with state: State) {
         lbState.text = state.name
         lbTax.text = String(state.tax)
