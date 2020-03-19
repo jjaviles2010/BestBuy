@@ -90,6 +90,7 @@ class SettingsViewController: UIViewController {
         let alert = UIAlertController(title: "Adicionar Estado",
                                       message: "Adicionar um novo estado",
                                       preferredStyle: .alert)
+              
         
         let saveAction = UIAlertAction(title: "Adicionar",
                                        style: .default) {
@@ -105,6 +106,9 @@ class SettingsViewController: UIViewController {
                                                 return
                                         }
                                         
+                                        if (!self.validateFields(state: stateToSave, tax: taxToSave)) {
+                                            return
+                                        }
                                         self.save(stateName: stateToSave, tax: taxToSave)
                                         self.stateTableView.reloadData()
         }
@@ -120,10 +124,69 @@ class SettingsViewController: UIViewController {
             textField.placeholder = "Imposto (%)"
             textField.keyboardType = .decimalPad
         }
-        
+
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         
+        present(alert, animated: true)
+    }
+    
+    private func validateFields(state: String, tax: String) -> Bool {
+                
+        var errorMessages: [String] = []
+        
+        if (state.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+            errorMessages.append("O campo 'Nome do estado' é obrigatório.")
+        } else {
+            //checar se já existe
+            var errorStateMessage = ""
+            if (isStateExists(stateName: state, errorMessage: &errorStateMessage)) {
+                errorMessages.append(errorStateMessage)
+            }
+        }
+        
+        if (tax.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+            errorMessages.append("O campo 'Taxa' é obrigatório.")
+        } else {
+            //checar se o número é válido
+            let taxDb = Double(tax) ?? 0
+            
+            if (taxDb == 0 || taxDb >= 100) {
+                errorMessages.append("O campo 'Taxa' é inválido [Valores válidos entre 0 e 99.9].")
+            }
+        }
+        
+        if (errorMessages.count > 0) {
+            showError(errorMessages: errorMessages)
+            return false
+        } else {
+            return true
+        }
+
+    }
+    
+    private func isStateExists(stateName: String, errorMessage: inout String) -> Bool {
+        let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
+                
+        fetchRequest.predicate = NSPredicate(format: "name CONTAINS[c] %@", stateName)
+        
+        do {
+            let states = try context.fetch(fetchRequest)
+            if (states.count > 0) {
+                errorMessage = "Estado já cadastrado."
+                return true
+            }
+        } catch _ as NSError {
+            errorMessage = "Erro interno. Tente novamente."
+            return true
+        }
+        return false
+    }
+    
+    private func showError(errorMessages: [String]) {
+        let alert = UIAlertController(title: "Erro", message: errorMessages.joined(separator: "\n"), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
         present(alert, animated: true)
     }
     
@@ -174,7 +237,19 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        
+        if (fetchedResultsController.fetchedObjects?.count == 0) {
+            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            emptyLabel.text = "Nenhum estado cadastrado!"
+            emptyLabel.textAlignment = NSTextAlignment.center
+            tableView.backgroundView = emptyLabel
+            tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+            return 0
+        } else {
+            tableView.backgroundView = nil
+            return fetchedResultsController.fetchedObjects?.count ?? 0
+        }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
