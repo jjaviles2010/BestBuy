@@ -17,8 +17,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var stateTableView: UITableView!
     
     let userDefault = UserDefaults.standard
-    var states: [NSManagedObject] = []
-    
     var fetchedResultsController: NSFetchedResultsController<State>!
     
     override func viewDidLoad() {
@@ -86,13 +84,17 @@ class SettingsViewController: UIViewController {
      */
     
     @IBAction func btAddState(_ sender: UIButton) {
+        showAlertState()
+    }
+    
+    private func showAlertState(editing: Bool = false) {
         
-        let alert = UIAlertController(title: "Adicionar Estado",
-                                      message: "Adicionar um novo estado",
+        let alert = UIAlertController(title: !editing ? "Adicionar " : "Alterar " + "estado",
+                                      message: !editing ? "Adicionar um novo " : "Alterar o " + "estado",
                                       preferredStyle: .alert)
               
         
-        let saveAction = UIAlertAction(title: "Adicionar",
+        let saveAction = UIAlertAction(title: !editing ? "Adicionar" : "Alterar",
                                        style: .default) {
                                         [unowned self] action in
                                         
@@ -130,7 +132,6 @@ class SettingsViewController: UIViewController {
         
         present(alert, animated: true)
     }
-    
     private func validateFields(state: String, tax: String) -> Bool {
                 
         var errorMessages: [String] = []
@@ -265,6 +266,19 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             context.delete(state)
             try? context.save()
         }
+    }
+    
+    /*private func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as! SettingsStateTableViewCell
+        let state = fetchedResultsController.object(at: indexPath)
+        print("State editing ")
+        return cell
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       // let selectedTrail = trails[indexPath.row]
+        print("Linha selecionada \(indexPath.row)")
+        
     }
     
 }
