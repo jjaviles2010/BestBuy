@@ -154,30 +154,37 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
         var fieldsValidated = true
         
         if(tfProductName.text!.isEmpty) {
-            showError(fieldDesc: "Nome do produto")
+            showError(message: "O campo 'Nome do produto' é obrigatorio!")
             fieldsValidated = false
         }
         
         if (ivProductImage.image == nil) {
-            showError(fieldDesc: "Imagem")
+            showError(message: "O campo 'Imagem' é obrigatorio!")
             fieldsValidated = false
         }
         
         if(tfState.text!.isEmpty) {
-            showError(fieldDesc: "Estado")
+            showError(message: "O campo 'Estado' é obrigatorio!")
             fieldsValidated = false
         }
         
         if(tfValue.text!.isEmpty) {
-            showError(fieldDesc: "Valor")
+            showError(message: "O campo 'Valor' é obrigatorio!")
             fieldsValidated = false
+        }
+        
+        //checar se o número é válido
+        let valueDb = Double(tfValue.text!) ?? 0
+                  
+        if (valueDb == 0) {
+            showError(message: "O campo 'Valor' é inválido!")
         }
         
         return fieldsValidated
     }
     
-    func showError(fieldDesc: String) {
-        let alert = UIAlertController(title: "Erro", message: "O campo \(fieldDesc) é obrigatorio!", preferredStyle: .alert)
+    func showError(message: String) {
+        let alert = UIAlertController(title: "Erro", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true)
