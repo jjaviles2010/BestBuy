@@ -41,7 +41,7 @@
 		312BD7A524060CB000C20141 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		312BD7A72406122100C20141 /* Product+image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+image.swift"; sourceTree = "<group>"; };
 		312BD7A924074D5500C20141 /* RegisterProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProductViewController.swift; sourceTree = "<group>"; };
-		68ADBD7523FDCC230037F47F /* BestBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68ADBD7523FDCC230037F47F /* ComprasUSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComprasUSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ADBD7823FDCC230037F47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68ADBD7C23FDCC230037F47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		68ADBD7623FDCC230037F47F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68ADBD7523FDCC230037F47F /* BestBuy.app */,
+				68ADBD7523FDCC230037F47F /* ComprasUSA.app */,
 				68ADBD8E23FDCC260037F47F /* BestBuyTests.xctest */,
 			);
 			name = Products;
@@ -143,7 +143,7 @@
 			);
 			name = BestBuy;
 			productName = BestBuy;
-			productReference = 68ADBD7523FDCC230037F47F /* BestBuy.app */;
+			productReference = 68ADBD7523FDCC230037F47F /* ComprasUSA.app */;
 			productType = "com.apple.product-type.application";
 		};
 		68ADBD8D23FDCC260037F47F /* BestBuyTests */ = {
@@ -406,7 +406,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.fiap.BestBuy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ComprasUSA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -424,7 +424,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.fiap.BestBuy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ComprasUSA;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

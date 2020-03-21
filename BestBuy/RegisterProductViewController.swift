@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -18,12 +19,14 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     
     private var pickerStates = UIPickerView()
     
-    var product: Product?
-    var pickerData = [["Florida", "California", "Georgia", "Texas", "Washington"]]
+    var fetchedResultsController: NSFetchedResultsController<State>!
     
+    var product: Product?
+      
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadStates()
         populateProductDetails()
         
         // Do any additional setup after loading the view.
@@ -50,6 +53,20 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
         }
     }
     
+    private func loadStates() {
+        let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
+                
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        try? fetchedResultsController.performFetch()
+    }
+    
     func selectPicture(sourceType: UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = sourceType
@@ -59,30 +76,22 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
  
     //Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerData.count
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[component][row]
+        return fetchedResultsController.fetchedObjects?[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tfState.text = pickerData[component][row]
+        tfState.text = fetchedResultsController.fetchedObjects?[row].name
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
     @IBAction func selectProductImage(_ sender: Any) {
         let alert = UIAlertController(title: "Selecionar imagem", message: "De onde deseja escolher a imagem?", preferredStyle: .actionSheet)
         
@@ -116,16 +125,22 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
         
         
         if (validateFields()) {
-            let state: State
             if (product == nil) {
                 product = Product(context: context)
             }
+
             product?.name = tfProductName.text
             product?.image = ivProductImage.image
-            state = State(context: context)
-            state.name = tfState.text
-            state.tax = 2.2
-            product?.state = state
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "State")
+            fetchRequest.predicate = NSPredicate(format: "name = %@", tfState.text!)
+            
+            do {
+                let result = try? context.fetch(fetchRequest)
+                product?.state = result?[0] as? State ?? nil
+            }
+            
+            
             product?.usedCard = swCard.isOn
             product?.value = Double(tfValue.text!) ?? 0
             
@@ -192,4 +207,15 @@ extension RegisterProductViewController: UIImagePickerControllerDelegate, UINavi
         
         dismiss(animated: true, completion: nil)
     }
+}
+
+
+extension RegisterProductViewController: NSFetchedResultsControllerDelegate {
+
+    //Vai ser chamado quando for mudado alguma dado
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        pickerStates.reloadAllComponents()
+    }
+    
 }
