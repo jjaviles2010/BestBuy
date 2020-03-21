@@ -54,50 +54,32 @@ class SettingsViewController: UIViewController {
         try? fetchedResultsController.performFetch()
     }
     
-    func save(stateName: String, tax: String) {
-        
-        let entity =
-            NSEntityDescription.entity(forEntityName: "State",
-                                       in: context)!
-        
-        let state = NSManagedObject(entity: entity,
-                                    insertInto: context)
-        
-        state.setValue(stateName, forKeyPath: "name")
-        state.setValue(Double(tax), forKeyPath: "tax")
-        
+    func save(state: State) {
         do {
             try context.save()
         } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            print("Não foi possível salvar. \(error), \(error.userInfo)")
         }
     }
-    
-    /*
-     // MARK: - Actions
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    @IBAction func btAddState(_ sender: UIButton) {
-        showAlertState()
-    }
-    
-    private func showAlertState(editing: Bool = false) {
+          
+    private func showAlertState(state: State? = nil) {
         
-        let alert = UIAlertController(title: !editing ? "Adicionar " : "Alterar " + "estado",
-                                      message: !editing ? "Adicionar um novo " : "Alterar o " + "estado",
+        var editing = false
+        var state = state //Possibilita a edição do parâmetro
+        
+        if (state != nil) {
+            editing = true
+        }
+        
+        let alert = UIAlertController(title: (!editing ? "Adicionar " : "Alterar ") + "estado",
+                                      message: (!editing ? "Adicionar um novo " : "Alterar o ") + "estado",
                                       preferredStyle: .alert)
               
         
-        let saveAction = UIAlertAction(title: !editing ? "Adicionar" : "Alterar",
+        let saveAction = UIAlertAction(title: (!editing ? "Adicionar" : "Alterar"),
                                        style: .default) {
                                         [unowned self] action in
-                                        
+                                                                                
                                         guard let textFieldState = alert.textFields?.first,
                                             let stateToSave = textFieldState.text else {
                                                 return
@@ -108,11 +90,20 @@ class SettingsViewController: UIViewController {
                                                 return
                                         }
                                         
-                                        if (!self.validateFields(state: stateToSave, tax: taxToSave)) {
+                                        if (!self.validateFields(state: stateToSave, tax: taxToSave, editingState: (editing ? state : nil))) {
                                             return
                                         }
-                                        self.save(stateName: stateToSave, tax: taxToSave)
+                                        
+                                        if (!editing) {
+                                            state = State(context: self.context)
+                                        }
+                                        
+                                        state!.name = stateToSave
+                                        state!.tax = Double(taxToSave) ?? 0
+                                        
+                                        self.save(state: state!)
                                         self.stateTableView.reloadData()
+                                        
         }
         
         let cancelAction = UIAlertAction(title: "Cancelar",
@@ -120,11 +111,17 @@ class SettingsViewController: UIViewController {
         
         alert.addTextField { (textField) in
             textField.placeholder = "Nome do Estado"
+            if (editing) {
+                textField.text = state?.name
+            }
         }
         
         alert.addTextField { (textField) in
             textField.placeholder = "Imposto (%)"
             textField.keyboardType = .decimalPad
+            if (editing) {
+                textField.text = String(state?.tax ?? 0)
+            }
         }
 
         alert.addAction(saveAction)
@@ -132,17 +129,22 @@ class SettingsViewController: UIViewController {
         
         present(alert, animated: true)
     }
-    private func validateFields(state: String, tax: String) -> Bool {
+    
+    private func validateFields(state: String, tax: String, editingState: State? = nil) -> Bool {
                 
         var errorMessages: [String] = []
         
         if (state.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
             errorMessages.append("O campo 'Nome do estado' é obrigatório.")
         } else {
-            //checar se já existe
-            var errorStateMessage = ""
-            if (isStateExists(stateName: state, errorMessage: &errorStateMessage)) {
-                errorMessages.append(errorStateMessage)
+            
+            //Só verifica se existe, senão estiver editando ou caso esteja editando, se o nome do Estado tenha sido alterado.
+            if (editingState == nil) || (editingState != nil && editingState?.name != state) {
+                //checar se já existe
+                var errorStateMessage = ""
+                if (isStateExists(stateName: state, errorMessage: &errorStateMessage)) {
+                    errorMessages.append(errorStateMessage)
+                }
             }
         }
         
@@ -169,7 +171,7 @@ class SettingsViewController: UIViewController {
     private func isStateExists(stateName: String, errorMessage: inout String) -> Bool {
         let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
                 
-        fetchRequest.predicate = NSPredicate(format: "name CONTAINS[c] %@", stateName)
+        fetchRequest.predicate = NSPredicate(format: "name ==[c] %@", stateName)
         
         do {
             let states = try context.fetch(fetchRequest)
@@ -189,6 +191,20 @@ class SettingsViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+    
+    /*
+     // MARK: - Actions
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    @IBAction func btAddState(_ sender: UIButton) {
+        showAlertState()
     }
     
 }
@@ -268,17 +284,10 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    /*private func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as! SettingsStateTableViewCell
-        let state = fetchedResultsController.object(at: indexPath)
-        print("State editing ")
-        return cell
-    }*/
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // let selectedTrail = trails[indexPath.row]
-        print("Linha selecionada \(indexPath.row)")
-        
+        let state = fetchedResultsController.object(at: indexPath)
+        showAlertState(state: state)
+        stateTableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
