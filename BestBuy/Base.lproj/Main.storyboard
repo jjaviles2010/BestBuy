@@ -10,13 +10,13 @@
         <!--Lista de Compras-->
         <scene sceneID="gba-jH-ROO">
             <objects>
-                <tableViewController id="tae-ig-UJa" customClass="ProductsTableViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tae-ig-UJa" customClass="ProductsTableViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3pw-US-gZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCell" rowHeight="102" id="7yY-VP-N8t" customClass="ProductTableViewCell" customModule="ComprasUSA" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCell" rowHeight="102" id="7yY-VP-N8t" customClass="ProductTableViewCell" customModule="BestBuy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7yY-VP-N8t" id="sk8-Vf-CYe">
@@ -85,7 +85,7 @@
         <!--Cadastrar Produto-->
         <scene sceneID="7E9-4f-Awy">
             <objects>
-                <viewController id="GsB-vT-3Jp" customClass="RegisterProductViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GsB-vT-3Jp" customClass="RegisterProductViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BET-Qw-E41">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
         <!--Ajustes-->
         <scene sceneID="lAL-i9-cwl">
             <objects>
-                <viewController title="Ajustes" id="2e6-O5-eRT" customClass="SettingsViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ajustes" id="2e6-O5-eRT" customClass="SettingsViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8R7-gv-WKX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,7 +306,7 @@
                                     <constraint firstAttribute="height" constant="128" id="4Tn-02-LYJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stateCell" textLabel="59I-ZR-0uS" detailTextLabel="LRd-EP-DKE" rowHeight="60" style="IBUITableViewCellStyleValue1" id="sVD-M5-hTm" customClass="SettingsStateTableViewCell" customModule="ComprasUSA" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stateCell" textLabel="59I-ZR-0uS" detailTextLabel="LRd-EP-DKE" rowHeight="60" style="IBUITableViewCellStyleValue1" id="sVD-M5-hTm" customClass="SettingsStateTableViewCell" customModule="BestBuy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="398" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sVD-M5-hTm" id="yGu-Nj-SYa">
@@ -378,18 +378,71 @@
         <!--Total da Compra-->
         <scene sceneID="YuL-j2-dOP">
             <objects>
-                <viewController title="Total da Compra" id="F2X-gY-Jql" sceneMemberID="viewController">
+                <viewController title="Total da Compra" id="F2X-gY-Jql" customClass="TotalViewController" customModule="ComprasUSA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ytc-pK-TAK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em U$:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2t1-VY-da1">
+                                <rect key="frame" x="152" y="104" width="110" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="gPN-eS-rpR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0E1-8a-kCi">
+                                <rect key="frame" x="64" y="138" width="286" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="JRo-xk-qz9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em R$:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJc-q7-SY8">
+                                <rect key="frame" x="152" y="296" width="110" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpd-O1-wNc">
+                                <rect key="frame" x="64" y="330" width="286" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="dtj-na-hWl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ptp-iZ-4sy" firstAttribute="trailing" secondItem="eJc-q7-SY8" secondAttribute="trailing" constant="152" id="3ue-Hl-V4P"/>
+                            <constraint firstItem="eJc-q7-SY8" firstAttribute="leading" secondItem="Ptp-iZ-4sy" secondAttribute="leading" constant="152" id="AM7-5x-yUI"/>
+                            <constraint firstItem="Qpd-O1-wNc" firstAttribute="top" secondItem="eJc-q7-SY8" secondAttribute="bottom" constant="10" id="Dv3-X7-s61"/>
+                            <constraint firstItem="Ptp-iZ-4sy" firstAttribute="trailing" secondItem="2t1-VY-da1" secondAttribute="trailing" constant="152" id="FX6-lp-Grf"/>
+                            <constraint firstItem="Ptp-iZ-4sy" firstAttribute="trailing" secondItem="Qpd-O1-wNc" secondAttribute="trailing" constant="64" id="NYH-qI-3E0"/>
+                            <constraint firstItem="2t1-VY-da1" firstAttribute="leading" secondItem="Ptp-iZ-4sy" secondAttribute="leading" constant="152" id="NpD-nl-DPu"/>
+                            <constraint firstItem="0E1-8a-kCi" firstAttribute="top" secondItem="2t1-VY-da1" secondAttribute="bottom" constant="10" id="OiY-Yj-Cko"/>
+                            <constraint firstItem="2t1-VY-da1" firstAttribute="top" secondItem="Ptp-iZ-4sy" secondAttribute="top" constant="60" id="URo-cD-Krj"/>
+                            <constraint firstItem="0E1-8a-kCi" firstAttribute="leading" secondItem="Ptp-iZ-4sy" secondAttribute="leading" constant="64" id="WX4-he-ye6"/>
+                            <constraint firstItem="eJc-q7-SY8" firstAttribute="top" secondItem="0E1-8a-kCi" secondAttribute="bottom" constant="110" id="XG9-TG-DEQ"/>
+                            <constraint firstItem="Qpd-O1-wNc" firstAttribute="leading" secondItem="Ptp-iZ-4sy" secondAttribute="leading" constant="64" id="fms-Oj-CVY"/>
+                            <constraint firstItem="Ptp-iZ-4sy" firstAttribute="trailing" secondItem="0E1-8a-kCi" secondAttribute="trailing" constant="64" id="kVf-bI-hlg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ptp-iZ-4sy"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Total da Compra" image="bag.fill" catalog="system" id="cAS-tW-nfE"/>
+                    <connections>
+                        <outlet property="lbTotalDolar" destination="0E1-8a-kCi" id="clW-bD-7P0"/>
+                        <outlet property="lbTotalReal" destination="Qpd-O1-wNc" id="c78-HC-roX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqi-TP-sTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718" y="-972"/>
+            <point key="canvasLocation" x="717.39130434782612" y="-972.32142857142856"/>
         </scene>
         <!--Compras-->
         <scene sceneID="6ll-Hp-IbY">

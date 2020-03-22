@@ -12,6 +12,7 @@
 		312BD7A624060CB000C20141 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A524060CB000C20141 /* ProductTableViewCell.swift */; };
 		312BD7A82406122100C20141 /* Product+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A72406122100C20141 /* Product+image.swift */; };
 		312BD7AA24074D5500C20141 /* RegisterProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BD7A924074D5500C20141 /* RegisterProductViewController.swift */; };
+		68518F5E2426C8D40065EDBF /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68518F5D2426C8D40065EDBF /* TotalViewController.swift */; };
 		68ADBD7923FDCC230037F47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7823FDCC230037F47F /* AppDelegate.swift */; };
 		68ADBD7B23FDCC230037F47F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */; };
 		68ADBD7D23FDCC230037F47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ADBD7C23FDCC230037F47F /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		312BD7A524060CB000C20141 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		312BD7A72406122100C20141 /* Product+image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+image.swift"; sourceTree = "<group>"; };
 		312BD7A924074D5500C20141 /* RegisterProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProductViewController.swift; sourceTree = "<group>"; };
+		68518F5D2426C8D40065EDBF /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
 		68ADBD7523FDCC230037F47F /* ComprasUSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComprasUSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ADBD7823FDCC230037F47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68ADBD7A23FDCC230037F47F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				312BD7A72406122100C20141 /* Product+image.swift */,
 				C353CB4724180681009AEBA8 /* SettingsViewController.swift */,
 				BEEE975B241AB37C009F4599 /* SettingsStateTableViewCell.swift */,
+				68518F5D2426C8D40065EDBF /* TotalViewController.swift */,
 				BE2AB42E241A72D70019F703 /* Settings.bundle */,
 			);
 			path = BestBuy;
@@ -239,6 +242,7 @@
 				68ADBD7B23FDCC230037F47F /* SceneDelegate.swift in Sources */,
 				312BD7A22405F51C00C20141 /* ProductsTableViewController.swift in Sources */,
 				BEEE975C241AB37C009F4599 /* SettingsStateTableViewCell.swift in Sources */,
+				68518F5E2426C8D40065EDBF /* TotalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,6 +33,7 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tfDollar.text = userDefault.string(forKey: "cotacaoDolar")
         tfIOF.text = userDefault.string(forKey: "iof")
     }
