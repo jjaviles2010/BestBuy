@@ -62,20 +62,24 @@ class TotalViewController: UIViewController {
         guard let pro = fetchedProduct?.fetchedObjects else { return }
         
         pro.forEach { (p) in
-            guard let state = p.state else { return }
-            if p.usedCard {
-                var total = (p.value * ((( state.tax * 10) / 100)) + ((iof! as NSString).doubleValue * 10) / 100)
-                totalDolar += total + p.value
-            } else {
-                var total = p.value * (( state.tax * 10) / 100)
-                totalDolar += total + p.value
+                guard let state = p.state else { return }
+                let valueWithTax = (p.value * state.tax / 100) + p.value
+                totalDolar += valueWithTax
+            
+                if p.usedCard {
+                    let valueInReal = (valueWithTax * (cotacao! as NSString).doubleValue)
+                    let valueInRealWithIOF = ((iof! as NSString).doubleValue * valueInReal / 100) + valueInReal
+                       totalReal += valueInRealWithIOF
+                } else {
+                    let valueInReal = (valueWithTax * (cotacao! as NSString).doubleValue)
+                     totalReal += valueInReal
+                }
+                
             }
-        }
+                             
         
-        totalReal = totalDolar * (cotacao as! NSString).doubleValue
-        
-        lbTotalDolar.text = String(totalDolar)
-        lbTotalReal.text = String(totalReal)
+        lbTotalDolar.text = String(format: "%.3f", totalDolar)
+        lbTotalReal.text = String(format: "%.3f", totalReal)
     }
     
 

@@ -10,27 +10,34 @@
         <!--Lista de Compras-->
         <scene sceneID="gba-jH-ROO">
             <objects>
-                <tableViewController id="tae-ig-UJa" customClass="ProductsTableViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tae-ig-UJa" customClass="ProductsTableViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3pw-US-gZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCell" rowHeight="102" id="7yY-VP-N8t" customClass="ProductTableViewCell" customModule="BestBuy" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCell" rowHeight="102" id="7yY-VP-N8t" customClass="ProductTableViewCell" customModule="ComprasUSA" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7yY-VP-N8t" id="sk8-Vf-CYe">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcx-6E-9aC">
-                                            <rect key="frame" x="96" y="26" width="107.66666666666669" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcx-6E-9aC">
+                                            <rect key="frame" x="96" y="26" width="151" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="151" id="G9T-8m-cKx"/>
+                                                <constraint firstAttribute="height" constant="27" id="XMP-s0-Div"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewh-9X-vIM">
-                                            <rect key="frame" x="322" y="32" width="39" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewh-9X-vIM">
+                                            <rect key="frame" x="288" y="32" width="73" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="73" id="JLt-8D-4oP"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -38,22 +45,26 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0vB-Ab-OwR" userLabel="Iv Product">
                                             <rect key="frame" x="12" y="10" width="63" height="80"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="3M5-mu-MJy"/>
                                                 <constraint firstAttribute="width" constant="63" id="981-sl-lTF"/>
                                                 <constraint firstAttribute="height" constant="80" id="OKs-cM-NXy"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="wGP-tT-YDC"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="dcx-6E-9aC" secondAttribute="bottom" constant="38" id="7PA-ce-sFZ"/>
                                         <constraint firstItem="0vB-Ab-OwR" firstAttribute="top" secondItem="sk8-Vf-CYe" secondAttribute="topMargin" constant="-1" id="7zF-JV-iw6"/>
+                                        <constraint firstItem="dcx-6E-9aC" firstAttribute="leading" secondItem="0vB-Ab-OwR" secondAttribute="trailing" constant="21" id="8Tb-TF-aL5"/>
                                         <constraint firstItem="dcx-6E-9aC" firstAttribute="top" secondItem="sk8-Vf-CYe" secondAttribute="topMargin" constant="15" id="8hT-1K-NL8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0vB-Ab-OwR" secondAttribute="bottom" constant="1" id="Fc5-rM-kXv"/>
                                         <constraint firstItem="ewh-9X-vIM" firstAttribute="top" secondItem="sk8-Vf-CYe" secondAttribute="topMargin" constant="21" id="HZW-Cz-edO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ewh-9X-vIM" secondAttribute="trailing" constant="33" id="Ia5-7m-yQC"/>
                                         <constraint firstItem="0vB-Ab-OwR" firstAttribute="leading" secondItem="sk8-Vf-CYe" secondAttribute="leadingMargin" constant="-8" id="Oee-ZM-vdN"/>
-                                        <constraint firstItem="ewh-9X-vIM" firstAttribute="leading" secondItem="dcx-6E-9aC" secondAttribute="trailing" constant="118.5" id="SWy-o6-C9c"/>
+                                        <constraint firstItem="dcx-6E-9aC" firstAttribute="leading" secondItem="0vB-Ab-OwR" secondAttribute="trailing" constant="21" id="VlA-sR-2gO"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ewh-9X-vIM" secondAttribute="bottom" constant="38" id="b0N-GE-kJB"/>
-                                        <constraint firstItem="ewh-9X-vIM" firstAttribute="leading" secondItem="dcx-6E-9aC" secondAttribute="trailing" constant="118.5" id="fgK-uH-7KH"/>
+                                        <constraint firstItem="dcx-6E-9aC" firstAttribute="top" secondItem="sk8-Vf-CYe" secondAttribute="topMargin" constant="15" id="dDp-vA-YCP"/>
+                                        <constraint firstItem="dcx-6E-9aC" firstAttribute="top" secondItem="sk8-Vf-CYe" secondAttribute="topMargin" constant="15" id="uqu-yF-SIM"/>
                                         <constraint firstItem="dcx-6E-9aC" firstAttribute="leading" secondItem="0vB-Ab-OwR" secondAttribute="trailing" constant="21" id="vy3-Rv-6pE"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -85,7 +96,7 @@
         <!--Cadastrar Produto-->
         <scene sceneID="7E9-4f-Awy">
             <objects>
-                <viewController id="GsB-vT-3Jp" customClass="RegisterProductViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GsB-vT-3Jp" customClass="RegisterProductViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BET-Qw-E41">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +263,7 @@
         <!--Ajustes-->
         <scene sceneID="lAL-i9-cwl">
             <objects>
-                <viewController title="Ajustes" id="2e6-O5-eRT" customClass="SettingsViewController" customModule="BestBuy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ajustes" id="2e6-O5-eRT" customClass="SettingsViewController" customModule="ComprasUSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8R7-gv-WKX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,7 +317,7 @@
                                     <constraint firstAttribute="height" constant="128" id="4Tn-02-LYJ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stateCell" textLabel="59I-ZR-0uS" detailTextLabel="LRd-EP-DKE" rowHeight="60" style="IBUITableViewCellStyleValue1" id="sVD-M5-hTm" customClass="SettingsStateTableViewCell" customModule="BestBuy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stateCell" textLabel="59I-ZR-0uS" detailTextLabel="LRd-EP-DKE" rowHeight="60" style="IBUITableViewCellStyleValue1" id="sVD-M5-hTm" customClass="SettingsStateTableViewCell" customModule="ComprasUSA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="398" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sVD-M5-hTm" id="yGu-Nj-SYa">
