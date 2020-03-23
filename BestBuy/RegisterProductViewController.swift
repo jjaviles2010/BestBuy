@@ -88,7 +88,11 @@ class RegisterProductViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tfState.text = fetchedResultsController.fetchedObjects?[row].name
+        
+        guard let states = fetchedResultsController.fetchedObjects else { return }
+        if(!states.isEmpty) {
+            tfState.text = states[row].name
+        }
     }
     
   
